@@ -72,3 +72,9 @@ resource "aws_eks_pod_identity_association" "app" {
   service_account = kubernetes_service_account.app_sa.metadata[0].name
   role_arn        = aws_iam_role.app_role.arn
 }
+
+# 4. EKS Pod Identity Agent Addon (MUST be installed for Pod Identity to work)
+resource "aws_eks_addon" "pod_identity" {
+  cluster_name = var.cluster_name
+  addon_name   = "eks-pod-identity-agent"
+}

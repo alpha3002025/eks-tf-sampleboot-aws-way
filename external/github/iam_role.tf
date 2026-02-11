@@ -17,7 +17,7 @@ resource "aws_iam_role" "github_actions" {
           }
           StringLike = {
             # 본인의 github org와 repo로 수정 필수!
-            "token.actions.githubusercontent.com:sub" = "repo:alpha3002025/overtake-springbootsample:*"
+            "token.actions.githubusercontent.com:sub" = "repo:alpha3002025/ekssampleboot:*"
           }
         }
       }

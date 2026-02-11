@@ -5,6 +5,8 @@ resource "aws_ecr_repository" "app_repo" {
   image_scanning_configuration {
     scan_on_push = true
   }
+
+  force_delete = true
 }
 
 # (선택 사항) Lifecycle Policy: 오래된 이미지를 자동 삭제하여 비용 절감
