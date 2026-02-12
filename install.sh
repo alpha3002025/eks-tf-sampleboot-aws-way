@@ -32,7 +32,7 @@ terraform init
 terraform plan --parallelism 3
 terraform apply -auto-approve
 
-cd ../../isra_alb/eksd_apnortheast2
+cd ../../irsa_alb/eksd_apnortheast2
 terraform init
 terraform plan --parallelism 3 -var="cluster_name=$cluster_name"
 terraform apply -var="cluster_name=$cluster_name" -auto-approve
@@ -48,7 +48,7 @@ helm upgrade --install aws-load-balancer-controller eks/aws-load-balancer-contro
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller
 
-cd ../../isra_externaldns/eksd_apnortheast2
+cd ../../irsa_externaldns/eksd_apnortheast2
 terraform init
 terraform plan --parallelism 3 -var="cluster_name=$cluster_name"
 terraform apply -var="cluster_name=$cluster_name" -auto-approve
