@@ -42,11 +42,11 @@ echo "Installing AWS Load Balancer Controller via Helm..."
 # ServiceAccount의 Annotation(eks.amazonaws.com/role-arn)이 이미 잘 설정되어 있는지 확인해야 합니다.
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update
-helm upgrade --install aws-load-balancer-controller eks/aws-load-balancer-controller \
+helm upgrade --install aws-load-balancer-controller-sampleboot eks/aws-load-balancer-controller \
   -n kube-system \
   --set clusterName=$cluster_name \
   --set serviceAccount.create=false \
-  --set serviceAccount.name=aws-load-balancer-controller
+  --set serviceAccount.name=aws-load-balancer-controller-sampleboot
 
 cd ../../irsa_externaldns/eksd_apnortheast2
 terraform init
@@ -58,14 +58,15 @@ echo "Installing ExternalDNS via Helm..."
 # ServiceAccount의 Annotation(eks.amazonaws.com/role-arn)이 이미 잘 설정되어 있는지 확인해야 합니다.
 helm repo add bitnami https://charts.bitnami.com/bitnami
 helm repo update
-helm upgrade --install external-dns bitnami/external-dns \
+helm upgrade --install external-dns-sampleboot bitnami/external-dns \
   -n kube-system \
   --set provider=aws \
   --set aws.zoneType=public \
   --set txtOwnerId=$cluster_name \
   --set policy=sync \
   --set serviceAccount.create=false \
-  --set serviceAccount.name=external-dns
+  --set serviceAccount.name=external-dns-sampleboot \
+  --set rbac.create=false
 
 cd ../../kms/eksd_apnortheast2
 terraform init

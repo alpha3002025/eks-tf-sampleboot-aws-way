@@ -36,7 +36,7 @@ rm -rf .terraform*
 
 # Uninstall ExternalDNS via Helm
 echo "Uninstalling ExternalDNS via Helm..."
-helm uninstall external-dns -n kube-system || true
+helm uninstall external-dns-sampleboot -n kube-system || true
 
 cd ../../irsa_externaldns/eksd_apnortheast2
 terraform destroy -var="cluster_name=$cluster_name" -auto-approve
@@ -44,7 +44,7 @@ rm -rf .terraform*
 
 # Uninstall ALB Controller via Helm
 echo "Uninstalling AWS Load Balancer Controller via Helm..."
-helm uninstall aws-load-balancer-controller -n kube-system || true
+helm uninstall aws-load-balancer-controller-sampleboot -n kube-system || true
 
 cd ../../irsa_alb/eksd_apnortheast2
 terraform destroy -var="cluster_name=$cluster_name" -auto-approve

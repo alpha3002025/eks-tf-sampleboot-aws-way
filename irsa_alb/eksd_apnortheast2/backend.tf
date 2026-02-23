@@ -3,7 +3,7 @@ terraform {
 
   backend "s3" {
     bucket         = "overtake-eks-apnortheast2-tfstate"
-    key            = "provisioning/terraform/irsa_alb/eksd_apnortheast2/terraform.tfstate"
+    key            = "provisioning/terraform/irsa_alb/sampleboot/eksd_apnortheast2/terraform.tfstate"
     region         = "ap-northeast-2"
     encrypt        = true
     dynamodb_table = "overtake-eks-terraform-lock"
